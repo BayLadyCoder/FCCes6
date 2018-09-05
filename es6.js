@@ -34,25 +34,23 @@ let catName;
 let quote;
 
 function catTalk() {
-    "use strict";
+  "use strict";
 
-    catName = "Oliver";
-    quote = catName + " says Meow!";
-
+  catName = "Oliver";
+  quote = catName + " says Meow!";
 }
 catTalk();
 
-
 // Compare Scopes of the var and let Keywords
 function checkScope() {
-    "use strict";
-    let i = "function scope";
-    if (true) {
-        let i = "block scope";
-        console.log("Block scope i is: ", i);
-    }
-    console.log("Function scope i is: ", i);
-    return i;
+  "use strict";
+  let i = "function scope";
+  if (true) {
+    let i = "block scope";
+    console.log("Block scope i is: ", i);
+  }
+  console.log("Function scope i is: ", i);
+  return i;
 }
 
 //Declare a Read-Only Variable with the const Keyword
@@ -72,17 +70,16 @@ Change the code so that all variables are declared using let or const. Use let w
 */
 
 function printManyTimes(str) {
-    "use strict";
+  "use strict";
 
-    // change code below this line
+  // change code below this line
 
-    const SENTENCE = str + " is cool!";
-    for (let i = 0; i < str.length; i += 2) {
-        console.log(SENTENCE);
-    }
+  const SENTENCE = str + " is cool!";
+  for (let i = 0; i < str.length; i += 2) {
+    console.log(SENTENCE);
+  }
 
-    // change code above this line
-
+  // change code above this line
 }
 printManyTimes("freeCodeCamp");
 
@@ -110,14 +107,14 @@ An array is declared as const s = [5, 7, 2]. Change the array to [2, 5, 7] using
 const s = [5, 7, 2];
 
 function editInPlace() {
-    "use strict";
-    // change code below this line
+  "use strict";
+  // change code below this line
 
-    // s = [2, 5, 7]; <- this is invalid
-    s[0] = 2;
-    s[1] = 5;
-    s[2] = 7;
-    // change code above this line
+  // s = [2, 5, 7]; <- this is invalid
+  s[0] = 2;
+  s[1] = 5;
+  s[2] = 7;
+  // change code above this line
 }
 editInPlace();
 
@@ -130,8 +127,8 @@ Once the object is frozen, you can no longer add, update, or delete properties f
 */
 
 let obj = {
-    name: "FreeCodeCamp",
-    review: "Awesome"
+  name: "FreeCodeCamp",
+  review: "Awesome"
 };
 Object.freeze(obj);
 obj.review = "bad"; //will be ignored. Mutation not allowed
@@ -142,20 +139,20 @@ console.log(obj);
 //In this challenge you are going to use Object.freeze to prevent mathematical constants from changing. You need to freeze the MATH_CONSTANTS object so that no one is able alter the value of PI, add, or delete properties .
 
 function freezeObj() {
-    "use strict";
-    const MATH_CONSTANTS = {
-        PI: 3.14
-    };
-    // change code below this line
-    Object.freeze(MATH_CONSTANTS);
+  "use strict";
+  const MATH_CONSTANTS = {
+    PI: 3.14
+  };
+  // change code below this line
+  Object.freeze(MATH_CONSTANTS);
 
-    // change code above this line
-    try {
-        MATH_CONSTANTS.PI = 99;
-    } catch (ex) {
-        console.log(ex);
-    }
-    return MATH_CONSTANTS.PI;
+  // change code above this line
+  try {
+    MATH_CONSTANTS.PI = 99;
+  } catch (ex) {
+    console.log(ex);
+  }
+  return MATH_CONSTANTS.PI;
 }
 const PI = freezeObj();
 
@@ -186,8 +183,8 @@ Rewrite the function assigned to the variable magic which returns a new Date() t
 */
 
 const magic = () => {
-    "use strict";
-    return new Date();
+  "use strict";
+  return new Date();
 };
 
 // OR
@@ -196,8 +193,8 @@ const magic = () => new Date();
 
 // Write Arrow Functions with Parameters
 const myConcat = (arr1, arr2) => {
-    "use strict";
-    return arr1.concat(arr2);
+  "use strict";
+  return arr1.concat(arr2);
 };
 // test your code
 console.log(myConcat([1, 2], [3, 4, 5]));
@@ -208,8 +205,6 @@ const myConcat = (arr1, arr2) => arr1.concat(arr2);
 
 // test your code
 console.log(myConcat([1, 2], [3, 4, 5]));
-
-
 
 // Write Higher Order Arrow Functions
 
@@ -233,14 +228,35 @@ Use arrow function syntax to compute the square of only the positive integers (f
 */
 
 const realNumberArray = [4, 5.6, -9.8, 3.14, 42, 6, 8.34];
-const squareList = (arr) => {
-    "use strict";
-    // change code below this line
-    const squaredIntegers = arr.filter((element) => (Number.isInteger(element) && element > 0)).map((num => num * num));
+const squareList = arr => {
+  "use strict";
+  // change code below this line
+  const squaredIntegers = arr
+    .filter(element => Number.isInteger(element) && element > 0)
+    .map(num => num * num);
 
-    // change code above this line
-    return squaredIntegers;
+  // change code above this line
+  return squaredIntegers;
 };
 // test your code
 const squaredIntegers = squareList(realNumberArray);
 console.log(squaredIntegers);
+
+//Default Parameters for Your Functions
+
+function greeting(name = "Anonymous") {
+  return "Hello " + name;
+}
+console.log(greeting("John")); // Hello John
+console.log(greeting()); // Hello Anonymous
+
+//Modify the function increment by adding default parameters so that it will add 1 to number if value is not specified.
+
+const increment = (function() {
+  "use strict";
+  return function increment(number, value = 1) {
+    return number + value;
+  };
+})();
+console.log(increment(5, 2)); // returns 7
+console.log(increment(5)); // returns should be 6
