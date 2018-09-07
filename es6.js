@@ -252,7 +252,7 @@ console.log(greeting()); // Hello Anonymous
 
 //Modify the function increment by adding default parameters so that it will add 1 to number if value is not specified.
 
-const increment = (function() {
+const increment = (function () {
   "use strict";
   return function increment(number, value = 1) {
     return number + value;
@@ -278,7 +278,7 @@ The rest operator eliminates the need to check the args array and allows us to a
 Modify the function sum so that it uses the rest operator and it works in the same way with any number of parameters.
 */
 
-const sum = (function() {
+const sum = (function () {
   "use strict";
   return function sum(...args) {
     return args.reduce((a, b) => a + b, 0);
@@ -311,8 +311,47 @@ Copy all contents of arr1 into another array arr2 using the spread operator.
 
 const arr1 = ["JAN", "FEB", "MAR", "APR", "MAY"];
 let arr2;
-(function() {
+(function () {
   "use strict";
   arr2 = [...arr1]; // change this line
 })();
 console.log(arr2);
+
+
+// Use Destructuring Assignment to Assign Variables from Objects
+/*
+We saw earlier how spread operator can effectively spread, or unpack, the contents of the array.
+
+We can do something similar with objects as well. Destructuring assignment is special syntax for neatly assigning values taken directly from an object to variables.
+
+Consider the following ES5 code:
+
+var voxel = {x: 3.6, y: 7.4, z: 6.54 };
+var x = voxel.x; // x = 3.6
+var y = voxel.y; // y = 7.4
+var z = voxel.z; // z = 6.54
+Here's the same assignment statement with ES6 destructuring syntax:
+
+const { x, y, z } = voxel; // x = 3.6, y = 7.4, z = 6.54
+If instead you want to store the values of voxel.x into a, voxel.y into b, and voxel.z into c, you have that freedom as well.
+
+const { x : a, y : b, z : c } = voxel // a = 3.6, b = 7.4, c = 6.54
+You may read it as "get the field x and copy the value into a," and so on.
+
+
+Use destructuring to obtain the length of the input string str, and assign the length to len in line.
+*/
+function getLength(str) {
+  "use strict";
+
+  // change code below this line
+  const {
+    length: len
+  } = str; // change this
+  // change code above this line
+
+  return len; // you must assign length to len in line
+
+}
+
+console.log(getLength('FreeCodeCamp'));
